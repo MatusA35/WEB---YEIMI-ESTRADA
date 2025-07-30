@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario Gym Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="formulario.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- BARRA NAVEGACION -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="live.html">Mi Perfil</a>
+        <a href="productos.html">Productos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="live.html">En Vivo</a>
+
+        <div class="social-icons mobile-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener" aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </nav>
+      <div class="social-icons desktop-socials">
+        <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener" aria-label="Visita nuestro canal de YouTube">
+          <i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </div>
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      function toggleMenu() {
+        navLinks.classList.toggle('open');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      hamburger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+        if (!isInside) {
+          navLinks.classList.remove('open');
+        }
+      });
+    </script>
+  </header>
+
+  <div class="login-video-section">
+    <video autoplay muted loop playsinline class="login-background-video">
+      <source src="video/register.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay"></div>
+  
+    <div class="login-container">
+      <div class="login-logo">
+        <img src="imagenes/logo.webp" alt="Logo Gym Virtual" />
+      </div>
+  
+      <h2>Únete al Gym Virtual</h2>
+  
+      <form id="gymForm" class="login-form">
+        <input type="text" name="name" id="name" placeholder="Nombre completo" required />
+        <input type="email" name="email" id="email" placeholder="Correo electrónico" required />
+        <input type="tel" name="phone" id="phone" placeholder="Teléfono / WhatsApp" required />
+        <button type="submit" class="btn-login">Enviar solicitud</button>
+        <p id="form-message" style="display:none; text-align:center; color:#fff; margin-top:15px;">
+          ¡Gracias! Tu información fue enviada correctamente.
+        </p>
+      </form>
+    </div>
+  </div>
+  
+
+  
+  <a href="https://wa.me/50212345678" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script>
+    const form = document.getElementById('gymForm');
+    const message = document.getElementById('form-message');
+  
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz9uPMeL-uN0qeewp3_xcgSHcPN8k4-q1zghMozYcjD-9dxEixsZ1F7EP1UJw3pAof2Jg/exec';
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value
+      };
+  
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset();
+          message.style.display = 'block';
+        } else {
+          alert('Error al enviar. Intenta de nuevo.');
+        }
+      })
+      .catch(error => {
+        alert('Error de red o permisos.');
+        console.error('Error:', error);
+      });
+    });
+  </script>
+  
+    
+</body>
+</html>

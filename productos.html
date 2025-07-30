@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinagres Naturales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="productos.css">
+</head>
+
+
+<body>
+
+    <!-- BARRA NAVEGACION -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+                </a>
+            </div>
+            <nav class="nav-links" id="nav-links">
+                <a href="live.html">Mi Perfil</a>
+                <a href="productos.html">Productos</a>
+                <a href="galeria.html">Galeria</a>
+                <a href="live.html">En Vivo</a>
+
+                <div class="social-icons mobile-socials">
+                    <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+                        aria-label="Visita nuestro canal de YouTube">
+                        <i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/yeimiestradaa/" target="_blank"
+                        aria-label="Sigue nuestro Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+            <div class="social-icons desktop-socials">
+                <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+                    aria-label="Visita nuestro canal de YouTube">
+                    <i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/yeimiestradaa/" target="_blank"
+                    aria-label="Sigue nuestro Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+        </div>
+        <script>
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            function toggleMenu() {
+                navLinks.classList.toggle('open');
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            hamburger.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+                if (!isInside) {
+                    navLinks.classList.remove('open');
+                }
+            });
+        </script>
+    </header>
+
+
+    <section class="vinagres-section">
+
+        <h2>Vinagres Naturales</h2>
+        <p class="descripcion">Nuestra línea de vinagres 100% naturales está elaborada artesanalmente con ingredientes
+          seleccionados, sin aditivos ni conservantes. Descubre el sabor y los beneficios del poder natural en cada
+          gota.</p>
+      
+        <div class="productos-grid">
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Manzana">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Manzana</h3>
+              <p>Ideal para digestión y desintoxicación. Hecho 100% natural.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Piña">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Piña</h3>
+              <p>Refrescante y lleno de enzimas naturales para tu salud.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Jamaica">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Jamaica</h3>
+              <p>Rico en antioxidantes, ideal para refrescos y ensaladas.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Coco">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Coco</h3>
+              <p>Suave y versátil, perfecto para cocina y salud intestinal.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+   <!-- Sección de Beneficios -->
+<section class="productos-destacados beneficios">
+  <h2 class="galeria-title">Beneficios de Nuestros Productos</h2>
+  <p class="subtitulo-principal">Disfruta de los múltiples beneficios que te ofrecemos con productos 100% naturales, envío seguro, atención dedicada y calidad garantizada.</p>
+
+  <div class="productos-grid">
+    <div class="producto-card beneficio">
+      <i class="fas fa-seedling icono-beneficio"></i>
+      <h3>100% Naturales</h3>
+      <p class="descripcion">Nuestros productos están elaborados con ingredientes naturales, libres de químicos y respetuosos con el medio ambiente.</p>
+    </div>
+
+    <div class="producto-card beneficio">
+      <i class="fas fa-truck icono-beneficio"></i>
+      <h3>Envíos a todo el país</h3>
+      <p class="descripcion">Realizamos entregas rápidas y seguras a cualquier parte del país, cuidando cada detalle del envío.</p>
+    </div>
+
+    <div class="producto-card beneficio">
+      <i class="fas fa-medal icono-beneficio"></i>
+      <h3>Calidad garantizada</h3>
+      <p class="descripcion">Productos certificados y con los más altos estándares de calidad para tu bienestar y confianza.</p>
+    </div>
+
+    <div class="producto-card beneficio">
+      <i class="fas fa-headset icono-beneficio"></i>
+      <h3>Atención personalizada</h3>
+      <p class="descripcion">Nuestro equipo está siempre listo para ayudarte y darte la mejor experiencia de compra.</p>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+            <p class="footer-copy">© 2025 Nadie Como Tú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/50212345678" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+
+    <!-- Coloca en el <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</body>
+
+</html>

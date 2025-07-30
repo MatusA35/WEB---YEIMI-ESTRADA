@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nadie Como Tú - Grabaciones de Clases en Vivo</title>
+
+  <meta name="description"
+    content="Accede a las grabaciones de las clases en vivo de Nadie Como Tú. Entrena con rutinas y programas exclusivos desde la comodidad de tu casa. Solo para usuarios registrados." />
+  <meta name="keywords"
+    content="grabaciones, clases en vivo, entrenamiento online, nadie como tú, rutinas de ejercicio, fitness, clases grabadas" />
+  <meta name="author" content="Nadie Como Tú" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Nadie Como Tú - Grabaciones de Clases en Vivo" />
+  <meta property="og:description"
+    content="Revisa las grabaciones exclusivas de nuestras clases en vivo. Mejora tu condición física con Nadie Como Tú." />
+  <meta property="og:image" content="https://tusitio.com/img/preview-grabaciones.jpg" />
+  <meta property="og:url" content="https://tusitio.com/grabaciones.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:title" content="Nadie Como Tú - Grabaciones de Clases en Vivo" />
+  <meta name="twitter:description"
+    content="Accede a grabaciones exclusivas y entrena a tu ritmo con Nadie Como Tú." />
+  <meta name="twitter:image" content="https://tusitio.com/img/preview-grabaciones.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="galerias.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <script>
+  if (sessionStorage.getItem("logueado") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+</head>
+
+
+</head>
+<body>
+
+
+    <!-- BARRA NAVEGACION -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+          </a>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="live.html">Mi Perfil</a>
+          <a href="productos.html">Productos</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="live.html">En Vivo</a>
+  
+          <div class="social-icons mobile-socials">
+            <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+              aria-label="Visita nuestro canal de YouTube">
+              <i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+        </nav>
+        <div class="social-icons desktop-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+      </div>
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+  
+        function toggleMenu() {
+          navLinks.classList.toggle('open');
+        }
+  
+        hamburger.addEventListener('click', toggleMenu);
+  
+        hamburger.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+          }
+        });
+  
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+          });
+        });
+  
+        document.addEventListener('click', (e) => {
+          const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+          if (!isInside) {
+            navLinks.classList.remove('open');
+          }
+        });
+      </script>
+    </header>
+  
+  
+
+    <section class="galeria-videos">
+      <h2>Clases Anteriores</h2>
+    
+      <div class="mes-section">
+        <h3>Julio 2025</h3>
+        <div class="video-slider">
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          <div class="video-item" onclick="abrirModal('videos/video1.mp4', 'Clase del 5 de Julio', 'Tema: Fe que mueve montañas')">
+            <video src="videos/video1.mp4" muted></video>
+            <h4>Clase 5 Jul</h4>
+            <p>Fe que mueve montañas</p>
+          </div>
+          
+          <!-- Puedes duplicar este bloque para más videos -->
+        </div>
+      </div>
+    
+      <div class="mes-section">
+        <h3>Junio 2025</h3>
+        <div class="video-slider">
+          <div class="video-item" onclick="abrirModal('videos/video2.mp4', 'Clase del 10 de Junio', 'Tema: La armadura de Dios')">
+            <video src="videos/video2.mp4" muted></video>
+            <h4>Clase 10 Jun</h4>
+            <p>La armadura de Dios</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="mes-section">
+        <h3>Mayo 2025</h3>
+        <div class="video-slider">
+          <div class="video-item" onclick="abrirModal('videos/video3.mp4', 'Clase del 20 de Mayo', 'Tema: Dios no falla')">
+            <video src="videos/video3.mp4" muted></video>
+            <h4>Clase 20 May</h4>
+            <p>Dios no falla</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Modal -->
+    <div id="modalVideo" class="modal">
+      <div class="modal-content">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <div class="video-principal">
+          <video id="videoModal" controls autoplay></video>
+        </div>
+        <div class="info-video">
+          <h3 id="tituloClase"></h3>
+          <p id="subtituloClase"></p>
+        </div>
+      </div>
+    </div>
+    
+  
+    <script>
+      function abrirModal(videoSrc, titulo, subtitulo) {
+        document.getElementById("modalVideo").style.display = "block";
+        document.getElementById("videoModal").src = videoSrc;
+        document.getElementById("tituloClase").textContent = titulo;
+        document.getElementById("subtituloClase").textContent = subtitulo;
+      }
+    
+      function cerrarModal() {
+        document.getElementById("modalVideo").style.display = "none";
+        document.getElementById("videoModal").pause();
+        document.getElementById("videoModal").src = "";
+      }
+    
+      window.onclick = function (event) {
+        let modal = document.getElementById("modalVideo");
+        if (event.target === modal) cerrarModal();
+      };
+    </script>
+    
+
+<footer class="site-footer">
+  <div class="footer-container">
+    
+
+    <div class="footer-social">
+      <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+
+    <p class="footer-copy">© 2025 Nadie Como Tú. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/50212345678" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+</body>
+</html>

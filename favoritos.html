@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis Clases Favoritas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="favoritos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <script>
+  if (sessionStorage.getItem("logueado") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+</head>
+
+
+<body>
+  <header class="navbar">
+    <!-- ... tu navbar aquí ... -->
+  </header>
+
+
+    <!-- BARRA NAVEGACION -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+          </a>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="productos.html">Productos</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="live.html">En Vivo</a>
+          <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+  
+  
+          <div class="social-icons mobile-socials">
+            <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+              aria-label="Visita nuestro canal de YouTube">
+              <i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+        </nav>
+        <div class="social-icons desktop-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+      </div>
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+  
+        function toggleMenu() {
+          navLinks.classList.toggle('open');
+        }
+  
+        hamburger.addEventListener('click', toggleMenu);
+  
+        hamburger.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+          }
+        });
+  
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+          });
+        });
+  
+        document.addEventListener('click', (e) => {
+          const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+          if (!isInside) {
+            navLinks.classList.remove('open');
+          }
+        });
+      </script>
+    </header>
+  
+
+  <h1>Mis Clases Favoritas</h1>
+  <p>Aquí puedes ver todas las clases que has guardado. Puedes volver a verlas o eliminarlas cuando quieras.</p>
+
+  <div class="galeria" id="galeriaFavoritos"></div>
+
+  <!-- Modal -->
+<!-- Modal para reproducir el video -->
+<div id="modalVideo" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+    <div id="modal-video-container"></div>
+  </div>
+</div>
+
+
+<script>
+  const galeria = document.getElementById('galeriaFavoritos');
+  const modal = document.getElementById('modalVideo');
+  const modalContainer = document.getElementById('modal-video-container');
+
+  function cargarFavoritos() {
+    galeria.innerHTML = '';
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+    if (favoritos.length === 0) {
+      galeria.innerHTML = '<p class="empty-message">Aún no tienes clases favoritas guardadas.</p>';
+      return;
+    }
+
+    favoritos.forEach((video, index) => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+
+      card.innerHTML = `
+        <iframe src="${video.videoSrc}" allowfullscreen data-video="${video.videoSrc}"></iframe>
+
+        <div class="video-info">
+          <h3>${video.titulo}</h3>
+          <p>${video.nombre}</p>
+          <p>Duración: ${video.duracion}</p>
+          <button class="btn-eliminar" data-index="${index}">Eliminar</button>
+        </div>
+      `;
+
+      galeria.appendChild(card);
+    });
+
+    // Eventos para eliminar
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const index = this.getAttribute('data-index');
+        eliminarFavorito(index);
+      });
+    });
+
+    // Eventos para abrir modal
+    document.querySelectorAll('.video-card iframe').forEach(iframe => {
+      iframe.addEventListener('click', function () {
+        const videoURL = this.getAttribute('data-video');
+        abrirModal(videoURL);
+      });
+    });
+  }
+
+  function eliminarFavorito(index) {
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    favoritos.splice(index, 1);
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    cargarFavoritos();
+  }
+
+  function abrirModal(videoURL) {
+    modalContainer.innerHTML = `
+      <iframe src="${videoURL}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    `;
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+  }
+
+  function cerrarModal() {
+    modal.style.display = 'none';
+    modalContainer.innerHTML = '';
+    document.body.classList.remove('modal-open');
+  }
+
+  // Al cargar
+  cargarFavoritos();
+
+  // Delegar evento click al document para los iframes dentro de .favorito
+document.addEventListener("click", function (e) {
+  const target = e.target;
+
+  // Verifica si el elemento clickeado es un iframe dentro de .favorito
+  if (target.tagName === "IFRAME" && target.closest(".favorito")) {
+    e.preventDefault();
+
+    // Extrae los datos del video desde los atributos del iframe
+    const videoSrc = target.getAttribute("data-video");
+    const card = target.closest(".favorito");
+    const titulo = card.querySelector("h3").textContent;
+    const instructor = card.querySelector(".instructor").textContent;
+    const duracion = card.querySelector(".duracion").textContent;
+
+    // Llama a la función que ya tienes para abrir el modal
+    abrirModal(videoSrc, titulo, instructor, duracion);
+  }
+});
+
+</script>
+
+
+</body>
+</html>
